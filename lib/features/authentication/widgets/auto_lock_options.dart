@@ -14,7 +14,7 @@ class AutoLockOptions extends ConsumerWidget {
     final state = ref.watch(authenticationControllerProvider).requireValue;
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -23,7 +23,12 @@ class AutoLockOptions extends ConsumerWidget {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
-            Text(TextConstants.autoLockDescription),
+            Text(
+              TextConstants.autoLockDescription,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            ),
             const SizedBox(height: 16),
             Wrap(
               spacing: 8,

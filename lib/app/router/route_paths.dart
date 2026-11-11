@@ -8,5 +8,16 @@ abstract final class RoutePaths {
   static String trackingSession(String id) =>
       '/tracking/history/${Uri.encodeComponent(id)}';
 
+  static const geofences = '/geofences';
+  static const geofenceNew = '/geofences/new';
+
+  /// Builds the route for a saved geofence.
+  static String geofenceDetail(String id) =>
+      '/geofences/${Uri.encodeComponent(id)}';
+
+  /// Builds the edit route for a saved geofence.
+  static String geofenceEdit(String id) =>
+      '/geofences/${Uri.encodeComponent(id)}/edit';
+
   static const settings = '/settings';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/text_constants.dart';
+import 'app_brand_mark.dart';
 
 class AppShell extends StatelessWidget {
   const AppShell({required this.navigationShell, super.key});
@@ -23,11 +24,13 @@ class AppShell extends StatelessWidget {
         final useRail = constraints.maxWidth >= 720;
         return Scaffold(
           appBar: AppBar(
-            title: const Text(TextConstants.appName),
-            leading: Icon(
-              Icons.shield_outlined,
-              color: Theme.of(context).colorScheme.primary,
+            toolbarHeight: 56,
+            titleSpacing: 0,
+            title: Text(
+              TextConstants.appName,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
+            leading: const AppBrandMark(),
           ),
           body: Row(
             children: [
@@ -55,6 +58,11 @@ class AppShell extends StatelessWidget {
                         label: Text(TextConstants.tracking),
                       ),
                       NavigationRailDestination(
+                        icon: Icon(Icons.radar_outlined),
+                        selectedIcon: Icon(Icons.radar_rounded),
+                        label: Text(TextConstants.areas),
+                      ),
+                      NavigationRailDestination(
                         icon: Icon(Icons.settings_outlined),
                         selectedIcon: Icon(Icons.settings_rounded),
                         label: Text(TextConstants.settings),
@@ -69,31 +77,39 @@ class AppShell extends StatelessWidget {
           ),
           bottomNavigationBar: useRail
               ? null
-              : NavigationBar(
-                  selectedIndex: navigationShell.currentIndex,
-                  onDestinationSelected: _selectDestination,
-                  destinations: const [
-                    NavigationDestination(
-                      icon: Icon(Icons.grid_view_outlined),
-                      selectedIcon: Icon(Icons.grid_view_rounded),
-                      label: TextConstants.overview,
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.my_location_outlined),
-                      selectedIcon: Icon(Icons.my_location_rounded),
-                      label: TextConstants.location,
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.route_outlined),
-                      selectedIcon: Icon(Icons.route_rounded),
-                      label: TextConstants.tracking,
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.settings_outlined),
-                      selectedIcon: Icon(Icons.settings_rounded),
-                      label: TextConstants.settings,
-                    ),
-                  ],
+              : MediaQuery.withClampedTextScaling(
+                  maxScaleFactor: 1.2,
+                  child: NavigationBar(
+                    selectedIndex: navigationShell.currentIndex,
+                    onDestinationSelected: _selectDestination,
+                    destinations: const [
+                      NavigationDestination(
+                        icon: Icon(Icons.grid_view_outlined),
+                        selectedIcon: Icon(Icons.grid_view_rounded),
+                        label: TextConstants.overview,
+                      ),
+                      NavigationDestination(
+                        icon: Icon(Icons.my_location_outlined),
+                        selectedIcon: Icon(Icons.my_location_rounded),
+                        label: TextConstants.location,
+                      ),
+                      NavigationDestination(
+                        icon: Icon(Icons.route_outlined),
+                        selectedIcon: Icon(Icons.route_rounded),
+                        label: TextConstants.tracking,
+                      ),
+                      NavigationDestination(
+                        icon: Icon(Icons.radar_outlined),
+                        selectedIcon: Icon(Icons.radar_rounded),
+                        label: TextConstants.areas,
+                      ),
+                      NavigationDestination(
+                        icon: Icon(Icons.settings_outlined),
+                        selectedIcon: Icon(Icons.settings_rounded),
+                        label: TextConstants.settings,
+                      ),
+                    ],
+                  ),
                 ),
         );
       },

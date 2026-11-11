@@ -13,13 +13,25 @@ class TrackingHistoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Card(
     child: ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      leading: Icon(
-        Icons.route_rounded,
-        color: Theme.of(context).colorScheme.primary,
+      leading: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary.withValues(alpha: .08),
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Icon(
+          Icons.route_rounded,
+          color: Theme.of(context).colorScheme.primary,
+        ),
       ),
-      title: Text(formatTrackingTime(context, session.startedAt)),
+      title: Text(
+        formatTrackingTime(context, session.startedAt),
+        style: Theme.of(
+          context,
+        ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+      ),
       subtitle: Text(
         TextConstants.trackingSessionSummary(
           TextConstants.distanceValue(session.distanceMetres),

@@ -45,6 +45,8 @@ class TrackingSessionScreen extends ConsumerWidget {
                 : TextConstants.trackingSessionUnavailable,
           )
         else ...[
+          TrackingRoutePreview(session: session, historical: true),
+          const SizedBox(height: 16),
           SessionMetadata(session: session),
           const SizedBox(height: 20),
           TrackingMetrics(
@@ -52,8 +54,6 @@ class TrackingSessionScreen extends ConsumerWidget {
             duration: Duration(milliseconds: session.elapsedMilliseconds),
             points: session.points.length,
           ),
-          const SizedBox(height: 20),
-          TrackingRoutePreview(session: session, historical: true),
         ],
       ],
     );

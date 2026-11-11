@@ -30,6 +30,10 @@ class SecuritySettings extends ConsumerWidget {
             child: Column(
               children: [
                 SwitchListTile.adaptive(
+                  secondary: Icon(
+                    Icons.fingerprint_rounded,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   title: const Text(TextConstants.biometricUnlock),
                   subtitle: Text(biometricDescription(state.capabilities)),
                   value: state.record!.biometricsEnabled,
@@ -58,9 +62,8 @@ class SecuritySettings extends ConsumerWidget {
                   leading: const Icon(Icons.verified_user_outlined),
                   title: const Text(TextConstants.pinProtected),
                   subtitle: Text(
-                    state.record!.biometricsEnabled
-                        ? TextConstants.biometricEnabled
-                        : TextConstants.biometricDisabled,
+                    TextConstants.securitySummary,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
                 ListTile(
@@ -86,7 +89,7 @@ class SecuritySettings extends ConsumerWidget {
               child: const Text(TextConstants.cancelBiometrics),
             ),
         ],
-        const SizedBox(height: 24),
+        const SizedBox(height: 16),
         const AutoLockOptions(),
         const SizedBox(height: 16),
         OutlinedButton.icon(

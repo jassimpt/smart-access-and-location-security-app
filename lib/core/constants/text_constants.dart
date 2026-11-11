@@ -1,8 +1,23 @@
 abstract final class TextConstants {
+  static const onDevice = 'PRIVATE BY DESIGN';
+  static const overviewSubtitle =
+      'Your location, journeys and trusted places. All in one place.';
+  static const locationSubtitle = 'A clearer view of where you are.';
+  static const trackingSubtitle = 'Every journey, beautifully mapped.';
+  static const areasSubtitle = 'Your places. Your boundaries.';
+  static const settingsSubtitle = 'Make Smart Access work for you.';
+  static const howItWorks = 'How it works';
+  static const savedJourneys = 'Saved journeys';
+  static const savedPlaces = 'Saved places';
+  static const yourMap = 'Your map';
+  static const areaMap = 'Your places on the map';
+  static const securitySummary = 'Protected on this device';
+  static const appearanceSubtitle = 'Choose the look that feels right.';
+
   static const appName = 'Smart Access';
   static const overview = 'Overview';
   static const settings = 'Settings';
-  static const welcomeTitle = 'Your security, at a glance.';
+  static const welcomeTitle = 'Stay connected. Stay secure.';
   static const welcomeDescription =
       'A personal space for device access, location, and activity.';
   static const privacyTitle = 'Personal by design';
@@ -262,6 +277,137 @@ abstract final class TextConstants {
   static const trackingStoppedNotification = 'Tracking saved';
   static const trackingStoppedBody =
       'Your completed session is available in tracking history.';
+
+  static const areas = 'Areas';
+  static const geofences = 'Geofences';
+  static const geofenceDescription =
+      'Save places and receive local alerts when you enter or leave their boundaries.';
+  static const viewGeofence = 'View area';
+  static const geofenceBoundary = 'Saved boundary';
+  static const addGeofence = 'Add geofence';
+  static const editGeofence = 'Edit geofence';
+  static const saveGeofence = 'Save geofence';
+  static const deleteGeofence = 'Delete geofence';
+  static const geofenceName = 'Area name';
+  static const geofenceNameHint = 'For example, Home or Office';
+  static const geofenceNameInvalid =
+      'Enter an area name with 1 to 60 characters.';
+  static const radius = 'Radius in metres';
+  static const radiusInvalid = 'Enter a radius between 50 and 10,000 metres.';
+  static const latitudeInvalid = 'Enter a latitude between -90 and 90.';
+  static const longitudeInvalid = 'Enter a longitude between -180 and 180.';
+  static const selectGeofenceCenter =
+      'Choose a center on the map, or enter valid coordinates.';
+  static const geofenceMapTitle = 'Choose the boundary center';
+  static const geofenceMapHint =
+      'Tap the map to choose a center. The circle shows the area covered by your radius.';
+  static const selectedCenter = 'Selected boundary center';
+  static const previewCoordinates = 'Preview coordinates';
+  static const useDeviceLocation = 'Use device location';
+  static const geofenceEditorHint =
+      'You can choose a center on the map or type coordinates, even when GPS is unavailable.';
+  static const geofenceLocationUnavailable =
+      'A device position is unavailable. Enable GPS and permissions in Location, or select a point manually.';
+  static const geofenceEditorLocationHint =
+      'The initial center comes from your saved location. Check it before saving.';
+  static const backToGeofences = 'Back to geofences';
+  static const geofenceEmptyTitle = 'Keep your important places close';
+  static const geofenceEmptyDescription =
+      'Add your first area, choose its center, and set a radius to get started.';
+  static const geofenceSaved = 'Geofence saved on this device.';
+  static const geofenceDeleted = 'Geofence deleted.';
+  static const geofenceLoadFailed =
+      'Saved geofences could not be loaded. Retry before making changes.';
+  static const geofenceSaveFailed =
+      'The geofence could not be saved. Please try again.';
+  static const geofenceDeleteFailed =
+      'The geofence could not be deleted. Please try again.';
+  static const geofenceNotFound = 'This geofence is no longer available.';
+  static const geofenceDeleteTitle = 'Delete this geofence?';
+  static const geofenceDeleteDescription =
+      'This removes the selected area from this device and stops alerts for it.';
+  static const startMonitoring = 'Start monitoring';
+  static const stopMonitoring = 'Stop monitoring';
+  static const monitoringActive = 'Monitoring saved areas';
+  static const monitoringStopped = 'Monitoring is stopped';
+  static const monitoringHint =
+      'Monitoring runs while Smart Access is open and unlocked. Start it again after leaving or locking the app.';
+  static const monitoringAccuracyHint =
+      'The first reliable reading establishes your position without an alert. Alerts wait for a clear crossing beyond GPS uncertainty.';
+  static const monitoringNotificationHint =
+      'You can allow local notifications for entry and exit alerts. Changes are also shown here during monitoring.';
+  static const monitoringLocationRequired =
+      'Enable GPS and location access in the Location tab before starting monitoring.';
+  static const monitoringPaused =
+      'Monitoring stopped because the app left the foreground or was locked.';
+  static const monitoringGpsLost =
+      'Monitoring stopped because GPS or location access became unavailable. Check Location before starting again.';
+  static const monitoringStartFailed =
+      'Monitoring could not start. Check GPS and try again.';
+  static const monitoringCancelFailed =
+      'GPS monitoring could not stop cleanly. Restart the app before starting again.';
+  static const geofenceNotificationUnavailable =
+      'Geofence notifications are unavailable or disabled. Boundary changes still appear here.';
+  static const geofenceInside = 'Inside';
+  static const geofenceOutside = 'Outside';
+  static const geofenceUnknown = 'Waiting for a clear position';
+  static const geofenceNotMonitoring = 'Not monitoring';
+  static const lastGeofenceEvent = 'Last event this monitoring session';
+  static const geofenceEntered = 'Entered';
+  static const geofenceExited = 'Exited';
+  static const geofenceWeakGps =
+      'The GPS reading is too imprecise for one or more areas. Move to an open space or enable precise location.';
+  static const geofenceChannelName = 'Geofence alerts';
+  static const geofenceChannelDescription =
+      'Local alerts when you enter or leave saved areas.';
+  static const geofenceEntryNotification = 'Entered a saved area';
+  static const geofenceExitNotification = 'Left a saved area';
+
+  static const dashboardDeviceStatus = 'Device security';
+  static const dashboardRefresh = 'Refresh overview';
+  static const dashboardRefreshFailed =
+      'The overview could not refresh. Please try again.';
+  static const dashboardPartialFailure =
+      'Some saved data could not be loaded. Refresh or open the affected feature to retry.';
+  static const dashboardLocationEmpty = 'No location reading yet';
+  static const dashboardLocationHint =
+      'Open Location to grant access or request a position. Saved locations remain available offline.';
+  static const dashboardBiometrics = 'Biometrics';
+  static const dashboardPermission = 'Location access';
+  static const dashboardGps = 'Location services';
+  static const dashboardNotChecked = 'Not checked';
+  static const dashboardUnavailable = 'Unavailable';
+  static const dashboardEnabled = 'Enabled';
+  static const dashboardDisabled = 'Disabled';
+  static const dashboardGranted = 'Granted';
+  static const dashboardNotGranted = 'Not granted';
+  static const dashboardBlocked = 'Blocked';
+  static const dashboardBiometricNotEnrolled = 'Not enrolled';
+  static const dashboardBiometricNotSupported = 'Not supported';
+  static const dashboardSecuritySettings = 'Security settings';
+  static const dashboardTrackingIdle = 'No active session';
+  static const dashboardTrackingDetails =
+      'Open tracking to record a journey or review saved sessions.';
+  static const dashboardAreasDetails =
+      'Manage saved boundaries and foreground entry/exit alerts.';
+  static const dashboardLoadingSaved = 'Loading saved data';
+  static const dashboardSnapshot = 'Position summary';
+
+  /// Formats live tracking metrics for the overview.
+  static String dashboardTrackingMetrics(String distance, String duration) =>
+      '$distance recorded • $duration active';
+
+  /// Formats the number of stored geofences.
+  static String geofenceCount(int count) =>
+      '$count saved ${count == 1 ? 'area' : 'areas'}';
+
+  /// Formats a geofence radius.
+  static String radiusMetres(double radius) =>
+      '${radius.toStringAsFixed(0)} m radius';
+
+  /// Describes the area associated with a local transition alert.
+  static String geofenceNotificationBody(String name, bool entered) =>
+      entered ? 'You entered $name.' : 'You left $name.';
 
   /// Formats a completed session summary.
   static String trackingSessionSummary(String distance, String duration) =>

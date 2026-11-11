@@ -8,6 +8,7 @@ import 'router/app_router.dart';
 import 'theme/app_theme.dart';
 import 'theme/theme_controller.dart';
 import 'widgets/startup_screen.dart';
+import 'widgets/app_lifecycle_handler.dart';
 
 class SmartAccess extends ConsumerWidget {
   const SmartAccess({super.key});
@@ -32,7 +33,8 @@ class SmartAccess extends ConsumerWidget {
       darkTheme: AppTheme.dark,
       themeMode: theme.mode,
       routerConfig: ref.watch(appRouterProvider),
-      builder: (context, child) => AuthenticationGate(child: child!),
+      builder: (context, child) =>
+          AppLifecycleHandler(child: AuthenticationGate(child: child!)),
     );
   }
 }

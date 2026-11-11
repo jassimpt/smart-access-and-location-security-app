@@ -10,11 +10,11 @@ class AppPage extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         padding: EdgeInsets.all(
-          MediaQuery.sizeOf(context).width < 600 ? 20 : 32,
+          MediaQuery.sizeOf(context).width < 600 ? 16 : 28,
         ),
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1040),
+            constraints: const BoxConstraints(maxWidth: 1200),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: children,
