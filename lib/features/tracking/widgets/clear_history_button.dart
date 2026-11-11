@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/text_constants.dart';
 import '../controllers/tracking_controller.dart';
+import '../controllers/tracking_export_controller.dart';
 import 'clear_tracking_history_dialog.dart';
 
 class ClearHistoryButton extends ConsumerWidget {
@@ -22,8 +23,11 @@ class ClearHistoryButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(trackingControllerProvider);
+    final exporting = ref.watch(
+      trackingExportControllerProvider.select((state) => state.isExporting),
+    );
     return OutlinedButton.icon(
-      onPressed: state.isBusy || state.history.isEmpty
+      onPressed: state.isBusy || exporting || state.history.isEmpty
           ? null
           : () => _confirm(context, ref),
       icon: const Icon(Icons.delete_outline_rounded),
