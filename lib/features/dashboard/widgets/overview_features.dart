@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../authentication/controllers/authentication_controller.dart';
 
 import '../../../core/constants/text_constants.dart';
 import 'overview_feature_card.dart';
 
-class OverviewFeatures extends StatelessWidget {
+class OverviewFeatures extends ConsumerWidget {
   const OverviewFeatures({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final record = ref
+        .watch(authenticationControllerProvider)
+        .asData
+        ?.value
+        .record;
     return LayoutBuilder(
       builder: (context, constraints) {
         final columns = constraints.maxWidth >= 900
@@ -22,7 +30,10 @@ class OverviewFeatures extends StatelessWidget {
           children: [
             SizedBox(
               width: width,
-              child: const OverviewFeatureCard(
+              child: OverviewFeatureCard(
+                status: record == null
+                    ? TextConstants.notConfigured
+                    : TextConstants.pinProtected,
                 icon: Icons.fingerprint_rounded,
                 title: TextConstants.deviceAccess,
                 description: TextConstants.deviceAccessDescription,

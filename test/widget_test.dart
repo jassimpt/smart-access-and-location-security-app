@@ -7,6 +7,9 @@ import 'package:smart_access/app/theme/theme_controller.dart';
 import 'package:smart_access/core/constants/text_constants.dart';
 import 'package:smart_access/core/storage/hive_service.dart';
 import 'package:smart_access/core/storage/preferences_service.dart';
+import 'package:smart_access/features/authentication/controllers/authentication_controller.dart';
+
+import 'helpers/authentication_fakes.dart';
 
 class MemoryPreferences implements PreferencesService {
   ThemeMode savedMode = ThemeMode.system;
@@ -39,6 +42,9 @@ Future<void> launchApp(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
+        authenticationControllerProvider.overrideWith(
+          UnlockedAuthenticationController.new,
+        ),
         preferencesServiceProvider.overrideWithValue(preferences),
         hiveServiceProvider.overrideWithValue(hive ?? TestHiveService()),
       ],

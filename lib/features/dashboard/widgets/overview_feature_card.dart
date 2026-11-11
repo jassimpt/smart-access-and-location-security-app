@@ -7,12 +7,14 @@ class OverviewFeatureCard extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.description,
+    this.status = TextConstants.notConfigured,
     super.key,
   });
 
   final IconData icon;
   final String title;
   final String description;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class OverviewFeatureCard extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              TextConstants.notConfigured,
+              status,
               style: theme.textTheme.labelMedium?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
