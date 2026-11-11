@@ -5,35 +5,12 @@ import '../controllers/authentication_controller.dart';
 import '../states/authentication_state.dart';
 import 'authentication_view.dart';
 
-class AuthenticationGate extends ConsumerStatefulWidget {
+class AuthenticationGate extends ConsumerWidget {
   const AuthenticationGate({required this.child, super.key});
   final Widget child;
 
   @override
-  ConsumerState<AuthenticationGate> createState() => _AuthenticationGateState();
-}
-
-class _AuthenticationGateState extends ConsumerState<AuthenticationGate>
-    with WidgetsBindingObserver {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    ref.read(authenticationControllerProvider.notifier).handleLifecycle(state);
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final authentication = ref.watch(authenticationControllerProvider);
     final state = authentication.asData?.value;
     final visible =
@@ -62,7 +39,7 @@ class _AuthenticationGateState extends ConsumerState<AuthenticationGate>
               excluding: !visible,
               child: TickerMode(
                 enabled: visible,
-                child: Offstage(offstage: !visible, child: widget.child),
+                child: Offstage(offstage: !visible, child: child),
               ),
             ),
             if (!visible)

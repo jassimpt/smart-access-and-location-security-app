@@ -32,6 +32,12 @@ class MapAttribution extends StatelessWidget {
   Widget build(BuildContext context) => Align(
     alignment: AlignmentDirectional.centerEnd,
     child: TextButton(
+      style: TextButton.styleFrom(
+        textStyle: Theme.of(context).textTheme.labelSmall,
+        padding: EdgeInsets.zero,
+        minimumSize: const Size(48, 32),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
       onPressed: () => _openAttribution(context),
       child: const Text(TextConstants.mapAttribution, textAlign: TextAlign.end),
     ),

@@ -38,7 +38,7 @@ class NotificationService {
     }
   }
 
-  /// Requests notification permission only after the tracking explanation.
+  /// Requests notification permission after a feature provides its contextual explanation.
   Future<bool> requestPermission() async {
     if (kIsWeb ||
         (defaultTargetPlatform != TargetPlatform.android &&
@@ -96,6 +96,40 @@ class NotificationService {
           'tracking_updates',
           TextConstants.trackingChannelName,
           channelDescription: TextConstants.trackingChannelDescription,
+          importance: Importance.defaultImportance,
+          priority: Priority.defaultPriority,
+        ),
+        iOS: DarwinNotificationDetails(
+          presentAlert: true,
+          presentSound: true,
+          presentBadge: false,
+        ),
+      ),
+    );
+  }
+
+  /// Shows one replaceable local transition alert for each saved geofence.
+  Future<void> showGeofenceTransition({
+    required String geofenceId,
+    required String name,
+    required bool entered,
+  }) async {
+    await _initialize();
+    var hash = 0;
+    for (final code in geofenceId.codeUnits) {
+      hash = (hash * 31 + code) & 0x1fffffff;
+    }
+    await _plugin.show(
+      id: 2000 + hash,
+      title: entered
+          ? TextConstants.geofenceEntryNotification
+          : TextConstants.geofenceExitNotification,
+      body: TextConstants.geofenceNotificationBody(name, entered),
+      notificationDetails: const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'geofence_alerts',
+          TextConstants.geofenceChannelName,
+          channelDescription: TextConstants.geofenceChannelDescription,
           importance: Importance.defaultImportance,
           priority: Priority.defaultPriority,
         ),

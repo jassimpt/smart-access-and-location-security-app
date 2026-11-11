@@ -39,7 +39,7 @@ class LocationController extends Notifier<LocationState> {
               AuthenticationStatus.unlocked &&
           _started &&
           _foreground) {
-        unawaited(refresh(queueIfBusy: true));
+        unawaited(refresh(queueIfBusy: !state.isBusy));
       }
     });
     return const LocationState();
@@ -237,7 +237,7 @@ class LocationController extends Notifier<LocationState> {
                 isCached: state.snapshot != null,
               );
             } else {
-              unawaited(refresh(queueIfBusy: true));
+              unawaited(refresh(queueIfBusy: !state.isBusy));
             }
           },
           onError: (Object error) {
@@ -272,7 +272,7 @@ class LocationController extends Notifier<LocationState> {
       _suspend();
     } else if (lifecycle == AppLifecycleState.resumed) {
       _foreground = true;
-      if (_started) unawaited(refresh(queueIfBusy: true));
+      if (_started) unawaited(refresh(queueIfBusy: !state.isBusy));
     }
   }
 

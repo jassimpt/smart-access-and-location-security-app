@@ -22,21 +22,42 @@ class ThemeOptionTile extends StatelessWidget {
     return Semantics(
       selected: selected,
       child: Card(
-        color: selected ? theme.colorScheme.primaryContainer : null,
+        color: selected
+            ? theme.colorScheme.primary.withValues(alpha: .06)
+            : null,
         child: ListTile(
           enabled: onTap != null,
           contentPadding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 12,
+            horizontal: 16,
+            vertical: 6,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          leading: Icon(icon),
+          leading: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: selected
+                  ? theme.colorScheme.primary.withValues(alpha: .12)
+                  : theme.colorScheme.surfaceContainerLow,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(
+              icon,
+              size: 22,
+              color: selected
+                  ? theme.colorScheme.primary
+                  : theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
           title: Text(title, style: theme.textTheme.titleMedium),
-          subtitle: Text(description),
+          subtitle: Text(description, style: theme.textTheme.bodySmall),
           trailing: Icon(
             selected ? Icons.check_circle_rounded : Icons.circle_outlined,
+            color: selected
+                ? theme.colorScheme.primary
+                : theme.colorScheme.outlineVariant,
+            size: 20,
           ),
           onTap: onTap,
         ),

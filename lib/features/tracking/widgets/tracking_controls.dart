@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/router/route_paths.dart';
 import '../../../core/constants/text_constants.dart';
+import '../../../core/widgets/info_disclosure.dart';
 import '../../location/widgets/location_notice.dart';
 import '../controllers/tracking_controller.dart';
 
@@ -16,7 +17,7 @@ class TrackingControls extends ConsumerWidget {
     final controller = ref.read(trackingControllerProvider.notifier);
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -29,14 +30,6 @@ class TrackingControls extends ConsumerWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 12),
-            Text(
-              state.session != null && !state.isRunning
-                  ? TextConstants.trackingPausedDescription
-                  : TextConstants.trackingForegroundHint,
-            ),
-            const SizedBox(height: 12),
-            const Text(TextConstants.trackingNotificationHint),
-            const SizedBox(height: 20),
             Wrap(
               spacing: 12,
               runSpacing: 12,
@@ -80,6 +73,13 @@ class TrackingControls extends ConsumerWidget {
                     onPressed: () => context.go(RoutePaths.location),
                     child: const Text(TextConstants.viewLocation),
                   ),
+              ],
+            ),
+            const InfoDisclosure(
+              paragraphs: [
+                TextConstants.trackingForegroundHint,
+                TextConstants.trackingNotificationHint,
+                TextConstants.routeGapsHint,
               ],
             ),
             if (state.isBusy) ...[

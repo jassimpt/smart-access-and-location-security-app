@@ -8,6 +8,9 @@ import '../../features/dashboard/screens/dashboard_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../features/location/screens/location_screen.dart';
 import '../../features/tracking/screens/tracking_screen.dart';
+import '../../features/geofencing/screens/geofence_screen.dart';
+import '../../features/geofencing/screens/geofence_detail_screen.dart';
+import '../../features/geofencing/screens/geofence_editor_screen.dart';
 import '../../features/tracking/screens/tracking_history_screen.dart';
 import '../../features/tracking/screens/tracking_session_screen.dart';
 import '../widgets/app_shell.dart';
@@ -50,6 +53,34 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                         path: ':sessionId',
                         builder: (context, state) => TrackingSessionScreen(
                           sessionId: state.pathParameters['sessionId']!,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RoutePaths.geofences,
+                builder: (context, state) => const GeofenceScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'new',
+                    builder: (context, state) => const GeofenceEditorScreen(),
+                  ),
+                  GoRoute(
+                    path: ':geofenceId',
+                    builder: (context, state) => GeofenceDetailScreen(
+                      id: state.pathParameters['geofenceId']!,
+                    ),
+                    routes: [
+                      GoRoute(
+                        path: 'edit',
+                        builder: (context, state) => GeofenceEditorScreen(
+                          id: state.pathParameters['geofenceId']!,
                         ),
                       ),
                     ],

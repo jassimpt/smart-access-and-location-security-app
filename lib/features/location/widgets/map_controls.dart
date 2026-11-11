@@ -15,11 +15,15 @@ class MapControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Align(
-    alignment: Alignment.topRight,
+    alignment: Alignment.centerRight,
     child: Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(10),
       child: Material(
         color: Theme.of(context).colorScheme.surface,
+        elevation: 3,
+        shadowColor: Theme.of(
+          context,
+        ).colorScheme.shadow.withValues(alpha: .15),
         borderRadius: BorderRadius.circular(14),
         child: Column(
           mainAxisSize: MainAxisSize.min,

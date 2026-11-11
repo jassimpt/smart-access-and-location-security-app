@@ -59,8 +59,6 @@ class TrackingRoutePreview extends StatelessWidget {
           title: TextConstants.routePreview,
           fitRoute: historical,
         ),
-        const SizedBox(height: 12),
-        const Text(TextConstants.routeGapsHint),
       ],
     );
   }

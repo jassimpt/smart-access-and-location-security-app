@@ -1,37 +1,33 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/text_constants.dart';
 import '../../../core/widgets/app_page.dart';
 import '../widgets/overview_features.dart';
+import '../widgets/dashboard_hero.dart';
+import '../../../core/widgets/adaptive_columns.dart';
 import '../widgets/privacy_card.dart';
+import '../widgets/dashboard_device_status.dart';
+import '../widgets/dashboard_location_card.dart';
+import '../widgets/dashboard_refresh_controls.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return AppPage(
+    return const AppPage(
       children: [
-        Text(
-          TextConstants.overview,
-          style: theme.textTheme.labelLarge?.copyWith(
-            color: theme.colorScheme.primary,
-          ),
+        DashboardHero(),
+        SizedBox(height: 16),
+        DashboardRefreshControls(),
+        SizedBox(height: 16),
+        DashboardLocationCard(),
+        SizedBox(height: 20),
+        AdaptiveColumns(
+          main: OverviewFeatures(),
+          aside: DashboardDeviceStatus(),
         ),
-        const SizedBox(height: 12),
-        Text(TextConstants.welcomeTitle, style: theme.textTheme.headlineMedium),
-        const SizedBox(height: 12),
-        Text(
-          TextConstants.welcomeDescription,
-          style: theme.textTheme.bodyLarge?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-          ),
-        ),
-        const SizedBox(height: 32),
-        const OverviewFeatures(),
-        const SizedBox(height: 24),
-        const PrivacyCard(),
+        SizedBox(height: 20),
+        PrivacyCard(),
       ],
     );
   }

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/text_constants.dart';
 
 class LocationMarker extends StatelessWidget {
-  const LocationMarker({super.key});
+  const LocationMarker({this.label = TextConstants.mapMarker, super.key});
+  final String label;
 
   @override
   Widget build(BuildContext context) => Semantics(
-    label: TextConstants.mapMarker,
+    label: label,
     child: DecoratedBox(
       decoration: BoxDecoration(
         shape: BoxShape.circle,

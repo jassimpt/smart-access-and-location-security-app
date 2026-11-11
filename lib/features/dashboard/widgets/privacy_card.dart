@@ -12,22 +12,22 @@ class PrivacyCard extends StatelessWidget {
     final theme = Theme.of(context);
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.tune_rounded, color: theme.colorScheme.primary),
-            const SizedBox(height: 16),
+            const SizedBox(height: 10),
             Text(TextConstants.privacyTitle, style: theme.textTheme.titleLarge),
             const SizedBox(height: 8),
             Text(
               TextConstants.privacyDescription,
-              style: theme.textTheme.bodyLarge?.copyWith(
+              style: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
-            const SizedBox(height: 20),
-            FilledButton.icon(
+            const SizedBox(height: 10),
+            TextButton.icon(
               onPressed: () => context.go(RoutePaths.settings),
               icon: const Icon(Icons.palette_outlined),
               label: const Text(TextConstants.customizeAppearance),

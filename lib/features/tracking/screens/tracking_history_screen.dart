@@ -9,6 +9,8 @@ import '../../location/widgets/location_notice.dart';
 import '../controllers/tracking_controller.dart';
 import '../widgets/clear_history_button.dart';
 import '../widgets/tracking_history_list.dart';
+import '../widgets/tracking_history_summary.dart';
+import '../../../core/widgets/section_header.dart';
 
 class TrackingHistoryScreen extends ConsumerWidget {
   const TrackingHistoryScreen({super.key});
@@ -18,11 +20,10 @@ class TrackingHistoryScreen extends ConsumerWidget {
     final state = ref.watch(trackingControllerProvider);
     return AppPage(
       children: [
-        Text(
-          TextConstants.trackingHistory,
-          style: Theme.of(context).textTheme.headlineMedium,
+        const SectionHeader(
+          title: TextConstants.trackingHistory,
+          subtitle: TextConstants.savedJourneys,
         ),
-        const SizedBox(height: 20),
         Wrap(
           spacing: 12,
           runSpacing: 12,
@@ -37,6 +38,8 @@ class TrackingHistoryScreen extends ConsumerWidget {
         ),
         if (state.message != null) LocationNotice(message: state.message!),
         const SizedBox(height: 20),
+        const TrackingHistorySummary(),
+        const SizedBox(height: 16),
         const TrackingHistoryList(),
       ],
     );
