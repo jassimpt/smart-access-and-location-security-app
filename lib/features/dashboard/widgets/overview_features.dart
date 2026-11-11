@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../authentication/controllers/authentication_controller.dart';
-
+import '../../../app/router/route_paths.dart';
 import '../../../core/constants/text_constants.dart';
+import '../../authentication/controllers/authentication_controller.dart';
+import '../../location/controllers/location_controller.dart';
+import '../../location/states/location_state.dart';
 import 'overview_feature_card.dart';
 
 class OverviewFeatures extends ConsumerWidget {
@@ -16,6 +19,7 @@ class OverviewFeatures extends ConsumerWidget {
         .asData
         ?.value
         .record;
+    final locationState = ref.watch(locationControllerProvider);
     return LayoutBuilder(
       builder: (context, constraints) {
         final columns = constraints.maxWidth >= 900
@@ -41,7 +45,23 @@ class OverviewFeatures extends ConsumerWidget {
             ),
             SizedBox(
               width: width,
-              child: const OverviewFeatureCard(
+              child: OverviewFeatureCard(
+                onTap: () => context.go(RoutePaths.location),
+                status: locationState.snapshot != null
+                    ? (locationState.isCached
+                          ? TextConstants.lastKnownPosition
+                          : TextConstants.locationReady)
+                    : switch (locationState.status) {
+                        LocationStatus.initial => TextConstants.viewLocation,
+                        LocationStatus.gpsDisabled =>
+                          TextConstants.gpsDisabledTitle,
+                        LocationStatus.permissionRequired ||
+                        LocationStatus.permanentlyDenied =>
+                          TextConstants.permissionNeeded,
+                        LocationStatus.unavailable =>
+                          TextConstants.locationUnavailableTitle,
+                        LocationStatus.ready => TextConstants.gpsEnabled,
+                      },
                 icon: Icons.my_location_rounded,
                 title: TextConstants.locationAwareness,
                 description: TextConstants.locationDescription,

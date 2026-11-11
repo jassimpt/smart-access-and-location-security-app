@@ -22,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Smart Access uses your location while you use the app to show your position and GPS accuracy.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use Face ID to securely unlock Smart Access instead of entering your app PIN.</string>
 	<key>LSRequiresIPhoneOS</key>
