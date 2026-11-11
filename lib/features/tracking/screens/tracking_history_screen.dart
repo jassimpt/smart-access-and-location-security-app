@@ -8,6 +8,8 @@ import '../../../core/widgets/app_page.dart';
 import '../../location/widgets/location_notice.dart';
 import '../controllers/tracking_controller.dart';
 import '../widgets/clear_history_button.dart';
+import '../widgets/export_history_button.dart';
+import '../widgets/tracking_export_feedback.dart';
 import '../widgets/tracking_history_list.dart';
 import '../widgets/tracking_history_summary.dart';
 import '../../../core/widgets/section_header.dart';
@@ -33,9 +35,11 @@ class TrackingHistoryScreen extends ConsumerWidget {
               icon: const Icon(Icons.arrow_back_rounded),
               label: const Text(TextConstants.backToTracking),
             ),
+            const ExportHistoryButton(),
             const ClearHistoryButton(),
           ],
         ),
+        const TrackingExportFeedback(),
         if (state.message != null) LocationNotice(message: state.message!),
         const SizedBox(height: 20),
         const TrackingHistorySummary(),

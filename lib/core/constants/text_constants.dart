@@ -1,4 +1,22 @@
 abstract final class TextConstants {
+  static const exportHistory = 'Export history';
+  static const exportDescription =
+      'Choose a format for your completed journeys, including route samples. Your device will open options to save or share the file.';
+  static const exportCsv = 'CSV spreadsheet';
+  static const exportCsvDescription =
+      'Session details and GPS samples in a spreadsheet-friendly table.';
+  static const exportJson = 'JSON document';
+  static const exportJsonDescription =
+      'Complete journeys with routes grouped by session.';
+  static const exportPreparing = 'Preparing export…';
+  static const exportShared = 'Export handed to your selected destination.';
+  static const exportCancelled =
+      'Export sharing cancelled. Your history is unchanged.';
+  static const exportOpened =
+      'Export opened. Save or share the file using your device options.';
+  static const exportFailed =
+      'Could not export your history. Please try again.';
+
   static const onDevice = 'PRIVATE BY DESIGN';
   static const overviewSubtitle =
       'Your location, journeys and trusted places. All in one place.';
