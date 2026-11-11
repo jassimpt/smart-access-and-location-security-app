@@ -14,6 +14,8 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_secure_storage: ^10.3.4
   shared_preferences: ^2.5.5
+  local_auth: ^3.0.1
+  cryptography: ^2.9.0
 
 dev_dependencies:
   flutter_test:

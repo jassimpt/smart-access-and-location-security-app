@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/constants/text_constants.dart';
+import '../features/authentication/widgets/authentication_gate.dart';
 import 'bootstrap.dart';
 import 'router/app_router.dart';
 import 'theme/app_theme.dart';
@@ -31,6 +32,7 @@ class SmartAccess extends ConsumerWidget {
       darkTheme: AppTheme.dark,
       themeMode: theme.mode,
       routerConfig: ref.watch(appRouterProvider),
+      builder: (context, child) => AuthenticationGate(child: child!),
     );
   }
 }
