@@ -7,6 +7,7 @@ import '../../../core/constants/text_constants.dart';
 import '../../authentication/controllers/authentication_controller.dart';
 import '../../location/controllers/location_controller.dart';
 import '../../location/states/location_state.dart';
+import '../../tracking/controllers/tracking_controller.dart';
 import 'overview_feature_card.dart';
 
 class OverviewFeatures extends ConsumerWidget {
@@ -20,6 +21,7 @@ class OverviewFeatures extends ConsumerWidget {
         ?.value
         .record;
     final locationState = ref.watch(locationControllerProvider);
+    final trackingState = ref.watch(trackingControllerProvider);
     return LayoutBuilder(
       builder: (context, constraints) {
         final columns = constraints.maxWidth >= 900
@@ -69,7 +71,17 @@ class OverviewFeatures extends ConsumerWidget {
             ),
             SizedBox(
               width: width,
-              child: const OverviewFeatureCard(
+              child: OverviewFeatureCard(
+                onTap: () => context.go(RoutePaths.tracking),
+                status: trackingState.isRunning
+                    ? TextConstants.trackingActive
+                    : trackingState.session != null
+                    ? TextConstants.trackingPaused
+                    : trackingState.initialized
+                    ? TextConstants.trackingSessionCount(
+                        trackingState.history.length,
+                      )
+                    : TextConstants.viewHistory,
                 icon: Icons.route_outlined,
                 title: TextConstants.activityHistory,
                 description: TextConstants.activityDescription,

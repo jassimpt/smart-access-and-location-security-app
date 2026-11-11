@@ -34,6 +34,7 @@ class AppShell extends StatelessWidget {
               if (useRail) ...[
                 SafeArea(
                   child: NavigationRail(
+                    scrollable: true,
                     selectedIndex: navigationShell.currentIndex,
                     onDestinationSelected: _selectDestination,
                     labelType: NavigationRailLabelType.all,
@@ -47,6 +48,11 @@ class AppShell extends StatelessWidget {
                         icon: Icon(Icons.my_location_outlined),
                         selectedIcon: Icon(Icons.my_location_rounded),
                         label: Text(TextConstants.location),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.route_outlined),
+                        selectedIcon: Icon(Icons.route_rounded),
+                        label: Text(TextConstants.tracking),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.settings_outlined),
@@ -76,6 +82,11 @@ class AppShell extends StatelessWidget {
                       icon: Icon(Icons.my_location_outlined),
                       selectedIcon: Icon(Icons.my_location_rounded),
                       label: TextConstants.location,
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.route_outlined),
+                      selectedIcon: Icon(Icons.route_rounded),
+                      label: TextConstants.tracking,
                     ),
                     NavigationDestination(
                       icon: Icon(Icons.settings_outlined),

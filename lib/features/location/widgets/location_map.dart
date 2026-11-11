@@ -12,8 +12,17 @@ import 'map_controls.dart';
 import 'map_tile_layer.dart';
 
 class LocationMap extends ConsumerStatefulWidget {
-  const LocationMap({required this.snapshot, super.key});
+  const LocationMap({
+    required this.snapshot,
+    this.routes = const [],
+    this.title = TextConstants.mapTitle,
+    this.fitRoute = false,
+    super.key,
+  });
   final LocationSnapshot snapshot;
+  final List<List<LatLng>> routes;
+  final String title;
+  final bool fitRoute;
 
   @override
   ConsumerState<LocationMap> createState() => _LocationMapState();
@@ -84,7 +93,7 @@ class _LocationMapState extends ConsumerState<LocationMap> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(TextConstants.mapTitle, style: theme.textTheme.titleLarge),
+            Text(widget.title, style: theme.textTheme.titleLarge),
             const SizedBox(height: 8),
             Text(
               TextConstants.mapGestureHint,
@@ -99,6 +108,17 @@ class _LocationMapState extends ConsumerState<LocationMap> {
                   mapController: _controller,
                   options: MapOptions(
                     initialCenter: _point,
+                    initialCameraFit:
+                        widget.fitRoute &&
+                            widget.routes.expand((route) => route).length > 1
+                        ? CameraFit.bounds(
+                            bounds: LatLngBounds.fromPoints(
+                              widget.routes.expand((route) => route).toList(),
+                            ),
+                            padding: const EdgeInsets.all(48),
+                            maxZoom: 17,
+                          )
+                        : null,
                     initialZoom: widget.snapshot.isApproximate == true
                         ? 12
                         : MapConstants.initialZoom,
@@ -115,6 +135,19 @@ class _LocationMapState extends ConsumerState<LocationMap> {
                       key: ValueKey(_tileVersion),
                       onTileError: _onTileError,
                     ),
+                    if (widget.routes.isNotEmpty)
+                      PolylineLayer(
+                        polylines: widget.routes
+                            .where((route) => route.length > 1)
+                            .map(
+                              (route) => Polyline(
+                                points: route,
+                                color: theme.colorScheme.primary,
+                                strokeWidth: 4,
+                              ),
+                            )
+                            .toList(),
+                      ),
                     CircleLayer(
                       circles: [
                         CircleMarker(
