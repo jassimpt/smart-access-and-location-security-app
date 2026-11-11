@@ -7,6 +7,9 @@ import '../../core/widgets/app_message.dart';
 import '../../features/dashboard/screens/dashboard_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../features/location/screens/location_screen.dart';
+import '../../features/tracking/screens/tracking_screen.dart';
+import '../../features/tracking/screens/tracking_history_screen.dart';
+import '../../features/tracking/screens/tracking_session_screen.dart';
 import '../widgets/app_shell.dart';
 import 'route_paths.dart';
 
@@ -30,6 +33,28 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: RoutePaths.location,
                 builder: (context, state) => const LocationScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RoutePaths.tracking,
+                builder: (context, state) => const TrackingScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'history',
+                    builder: (context, state) => const TrackingHistoryScreen(),
+                    routes: [
+                      GoRoute(
+                        path: ':sessionId',
+                        builder: (context, state) => TrackingSessionScreen(
+                          sessionId: state.pathParameters['sessionId']!,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

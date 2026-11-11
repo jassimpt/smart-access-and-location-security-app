@@ -176,6 +176,110 @@ abstract final class TextConstants {
   static const permissionNeeded = 'Permission needed';
   static const viewLocation = 'View location';
 
+  static const tracking = 'Tracking';
+  static const trackingDescription =
+      'Record a journey and keep its route and summary on this device.';
+  static const trackingForegroundHint =
+      'Tracking runs while the app is open and unlocked. Leaving the app pauses recording; resume when you return.';
+  static const trackingNotificationHint =
+      'When you start, you can allow local notifications for tracking status changes. Tracking still works if you decline.';
+  static const startTracking = 'Start tracking';
+  static const resumeTracking = 'Resume tracking';
+  static const pauseTracking = 'Pause tracking';
+  static const stopTracking = 'Stop and save';
+  static const trackingReady = 'Ready for your next journey';
+  static const trackingActive = 'Tracking in progress';
+  static const trackingPaused = 'Tracking paused';
+  static const trackingWaiting = 'Waiting for a GPS fix';
+  static const trackingWaitingDescription =
+      'Your route will appear after the first usable GPS reading. Try an open area if the signal is weak.';
+  static const trackingPausedDescription =
+      'Recording is paused. Resume to continue, or stop and save this session.';
+  static const trackingDistance = 'Distance';
+  static const trackingSpeed = 'Current speed';
+  static const trackingDuration = 'Active duration';
+  static const trackingSamples = 'Route points';
+  static const backToTracking = 'Back to tracking';
+  static const backToHistory = 'Back to history';
+  static const trackingHistory = 'Tracking history';
+  static const viewHistory = 'View history';
+  static const historyEmptyTitle = 'Your journeys will appear here';
+  static const historyEmptyDescription =
+      'Complete a tracking session to save its route, distance, and duration.';
+  static const clearHistory = 'Clear history';
+  static const clearTrackingHistoryTitle = 'Clear tracking history?';
+  static const clearTrackingHistoryDescription =
+      'This removes all completed sessions from this device. Your unfinished session is kept.';
+  static const cancel = 'Cancel';
+  static const trackingHistoryCleared = 'Tracking history cleared.';
+  static const trackingHistoryClearFailed =
+      'History could not be cleared. Please try again.';
+  static const trackingLoadFailed =
+      'Tracking data could not be loaded. Retry before starting a session.';
+  static const trackingSaveFailed =
+      'Progress could not be saved. Recording is paused; try Resume or Stop and save to retry.';
+  static const trackingRecovered =
+      'An unfinished session was recovered from this device. It is paused; resume to continue or stop to save it.';
+  static const trackingPausedBackground =
+      'Recording paused because the app left the foreground or was locked.';
+  static const trackingPausedManually =
+      'Recording paused. Time spent paused is excluded from the duration.';
+  static const trackingGpsLost =
+      'Recording paused because location became unavailable. Check GPS and permissions before resuming.';
+  static const trackingLocationRequired =
+      'Enable location access and GPS in the Location tab before starting or resuming.';
+  static const trackingCancelFailed =
+      'GPS monitoring could not stop cleanly. Restart the app before starting another session.';
+  static const trackingStartFailed =
+      'Tracking could not start. Check GPS and try again.';
+  static const trackingNoNotification =
+      'Tracking notifications are unavailable or disabled. Recording still works.';
+  static const trackingWeakSignal =
+      'Waiting for a more accurate GPS reading. Low-quality readings are excluded from the route.';
+  static const trackingSessionSaved = 'Session saved to your history.';
+  static const trackingSessionUnavailable =
+      'This session is no longer available.';
+  static const sessionDetails = 'Session details';
+  static const sessionStarted = 'Started';
+  static const sessionEnded = 'Ended';
+  static const routePreview = 'Recorded route';
+  static const sessionNoRoute =
+      'No usable GPS points were recorded for this session.';
+  static const routeGapsHint =
+      'Separate route segments show pauses. Distance and duration exclude those gaps.';
+  static const trackingChannelName = 'Tracking updates';
+  static const trackingChannelDescription =
+      'Local updates when tracking starts, pauses, resumes, or stops.';
+  static const trackingStartedNotification = 'Tracking started';
+  static const trackingStartedBody =
+      'Your route is being recorded while Smart Access is open and unlocked.';
+  static const trackingResumedNotification = 'Tracking resumed';
+  static const trackingResumedBody =
+      'Recording has continued in a new route segment.';
+  static const trackingPausedNotification = 'Tracking paused';
+  static const trackingPausedBody =
+      'Open Smart Access and resume when you are ready to continue.';
+  static const trackingStoppedNotification = 'Tracking saved';
+  static const trackingStoppedBody =
+      'Your completed session is available in tracking history.';
+
+  /// Formats a completed session summary.
+  static String trackingSessionSummary(String distance, String duration) =>
+      '$distance • $duration';
+
+  /// Formats the number of locally completed tracking sessions.
+  static String trackingSessionCount(int count) =>
+      '$count saved ${count == 1 ? 'session' : 'sessions'}';
+
+  /// Formats distance in the appropriate metric unit.
+  static String distanceValue(double metres) => metres < 1000
+      ? '${metres.toStringAsFixed(0)} m'
+      : '${(metres / 1000).toStringAsFixed(2)} km';
+
+  /// Formats a speed in kilometres per hour.
+  static String speedValue(double metresPerSecond) =>
+      '${(metresPerSecond * 3.6).toStringAsFixed(1)} km/h';
+
   /// Formats estimated GPS uncertainty in metres.
   static String accuracyMetres(String metres) => '± $metres m';
 
