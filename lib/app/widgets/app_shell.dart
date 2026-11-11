@@ -44,6 +44,11 @@ class AppShell extends StatelessWidget {
                         label: Text(TextConstants.overview),
                       ),
                       NavigationRailDestination(
+                        icon: Icon(Icons.my_location_outlined),
+                        selectedIcon: Icon(Icons.my_location_rounded),
+                        label: Text(TextConstants.location),
+                      ),
+                      NavigationRailDestination(
                         icon: Icon(Icons.settings_outlined),
                         selectedIcon: Icon(Icons.settings_rounded),
                         label: Text(TextConstants.settings),
@@ -66,6 +71,11 @@ class AppShell extends StatelessWidget {
                       icon: Icon(Icons.grid_view_outlined),
                       selectedIcon: Icon(Icons.grid_view_rounded),
                       label: TextConstants.overview,
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.my_location_outlined),
+                      selectedIcon: Icon(Icons.my_location_rounded),
+                      label: TextConstants.location,
                     ),
                     NavigationDestination(
                       icon: Icon(Icons.settings_outlined),
