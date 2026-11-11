@@ -8,6 +8,8 @@ A Flutter app for secure device access, live location, journey tracking, and geo
 
 [Download iOS IPA](https://drive.google.com/file/d/1CERtbJ9x6QOnirkRNLT-iVWq1hPkOIwF/view?usp=sharing)
 
+[Screenshots and recordings](https://drive.google.com/drive/folders/1vLn4S2BvdS7Gld1FgGEMOGmhcDaFCLGA?usp=sharing)
+
 > **iOS installation:** This IPA is unsigned. Use [iLoader](https://github.com/nab138/iloader) on a Mac to sign and install it on your iPhone through **Import IPA**.
 
 ## Features
